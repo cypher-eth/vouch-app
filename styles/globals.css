@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  background-color: #000;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl text-black/70 font-semibold text-center mb-4;
+}
