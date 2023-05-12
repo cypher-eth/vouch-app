@@ -35,7 +35,7 @@ function Register() {
 
   waitForTx(txReceipt)
 
-  if (billId !== "0" && billId !== "") {
+  if (billId !== "0" && billId !== "" && billId != undefined ) {
     return (
       <section className="flex w-full flex-col gap-4">
         <Vouch billCode={billId!} />

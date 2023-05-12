@@ -34,20 +34,19 @@ function Vouch({ billCode }: { billCode: string }) {
 
   waitForTx(txReceipt)
 
-  if (billCode) {
+  if (billCode ) {
     return (
       <section className="flex flex-col gap-4">
         <div>
           <h1 className="mb-2">Vouch Note</h1>
           <p className="text-center opacity-70">
-            Input note to vouch:{" "}
             {billCode === "0" ? "" : ` (Your note is #${billCode})`}
           </p>
         </div>
         <Input
           value={addy}
           onChange={(e) => setAddy(e.target.value)}
-          placeholder="Self issued identity"
+          placeholder="The Note of someone you trust."
         />
         <ForceConnectButton>
           <Button disabled={isLoading} onClick={handleVouch}>VOUCH</Button>
@@ -61,11 +60,11 @@ function Vouch({ billCode }: { billCode: string }) {
       <div>
         <h1 className="mb-2">No Bills Found</h1>
         <p className="text-center opacity-70">
-          You must register A Bill to continue.
+          You must register a Bill to continue.
         </p>
       </div>
       <ForceConnectButton>
-        <Button asLink href="/">
+        <Button asLink href="/register">
           REGISTER
         </Button>
       </ForceConnectButton>
