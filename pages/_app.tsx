@@ -14,7 +14,7 @@ import MainLayout from "@/components/MainLayout"
 const { provider, chains } = configureChains([goerli], [publicProvider()])
 
 const { connectors } = getDefaultWallets({
-  appName: "one53.vercel.app",
+  appName: "153153153.xyz",
   // replace with your appUrl or appName
   chains,
 })
