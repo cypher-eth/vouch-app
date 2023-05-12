@@ -9,7 +9,7 @@ export default function Home() {
   const { address: connectedAddy } = useConnectedAccount()
   const { latestBillCode } = useAccountMetadata(connectedAddy)
 
-  if (latestBillCode === "0") {
+  if (latestBillCode == "0") {
     return (
       <section className="flex w-full flex-col gap-4">
         <Register />

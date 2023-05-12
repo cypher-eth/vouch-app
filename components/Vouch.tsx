@@ -64,10 +64,12 @@ function Vouch({ billCode }: { billCode: string }) {
           You must register A Bill to continue.
         </p>
       </div>
+      <ForceConnectButton>
+        <Button asLink href="/">
+          REGISTER
+        </Button>
+      </ForceConnectButton>
 
-      <Button asLink href="/">
-        REGISTER
-      </Button>
     </section>
   )
 }
