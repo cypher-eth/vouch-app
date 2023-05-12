@@ -21,7 +21,7 @@ function Register() {
     write: register,
     data: txReceipt,
     isLoading,
-  } = useRegisterBill(address!, billId!)
+  } = useRegisterBill(billId!)
 
   function handleRegister() {
     if (!billId?.length) return toastError("Bill cannot be empty")

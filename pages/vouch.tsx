@@ -12,14 +12,7 @@ export default function Home() {
   return (
     <section className="flex w-full flex-col gap-4">
       <Vouch billCode={latestBillCode} />
-      {latestBillCode && (
-        <Fragment>
-          <p className="text-center text-white">Or</p>
-          <Button type="outlined" asLink href="/">
-            Register
-          </Button>
-        </Fragment>
-      )}
+
     </section>
   )
 }

@@ -23,20 +23,20 @@ export const ABI = [
   },
 ] as const
 
-export const useRegisterBill = (address: string, id: string) => {
+export const useRegisterBill = ( id: string) => {
   return useWriteTransaction({
-    abi: ["function register (address, string) external"],
-    address: "0xb84c93cfb31d51ad3d48e77cd4fa44ed59d277fa",
-    args: [address, id],
+    abi: ["function register (string) external"],
+    address: "0x4D13ba5c7894C8d6c7B8Df0253Ce84a56562D10E",
+    args: [id],
     functionName: "register",
   })
 }
 
-export const useVouchForAddy = (address: string) => {
+export const useVouchForAddy = ( barcode: string, message: string ) => {
   return useWriteTransaction({
-    abi: ["function vouch(address) external"],
-    address: "0xb84c93cfb31d51ad3d48e77cd4fa44ed59d277fa",
-    args: [address],
+    abi: ["function vouch(string, string) external returns (bool)"],
+    address: "0x4D13ba5c7894C8d6c7B8Df0253Ce84a56562D10E",
+    args: [barcode, message],
     overrides: {
       gasLimit: 3e6 as any,
     },
@@ -53,7 +53,7 @@ export const useAccountMetadata = (address: string) => {
 
   const contract = useContract({
     abi: ABI,
-    address: "0xb84c93cfb31d51ad3d48e77cd4fa44ed59d277fa",
+    address: "0x4D13ba5c7894C8d6c7B8Df0253Ce84a56562D10E",
     signerOrProvider: signer?.provider,
   })
 

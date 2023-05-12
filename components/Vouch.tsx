@@ -9,7 +9,7 @@ import { ForceConnectButton } from "./Register"
 
 function Vouch({ billCode }: { billCode: string }) {
   const [addy, setAddy] = useState<string>()
-  const { write: vouch } = useVouchForAddy(addy!)
+  const { write: vouch } = useVouchForAddy(addy!, "Good vibes at Zuzalu")
 
   function handleVouch() {
     if (!addy?.length) return toastError("Address cannot be empty")
@@ -21,16 +21,16 @@ function Vouch({ billCode }: { billCode: string }) {
     return (
       <section className="flex flex-col gap-4">
         <div>
-          <h1 className="mb-2">Vouch Bill</h1>
+          <h1 className="mb-2">Vouch Note</h1>
           <p className="text-center opacity-70">
-            Input address to vouch{" "}
-            {billCode === "0" ? "your bill" : `bill #${billCode}`}
+            Input note to vouch:{" "}
+            {billCode === "0" ? "" : ` (Your note is #${billCode})`}
           </p>
         </div>
         <Input
           value={addy}
           onChange={(e) => setAddy(e.target.value)}
-          placeholder="Account address"
+          placeholder="Self issued identity"
         />
         <ForceConnectButton>
           <Button onClick={handleVouch}>VOUCH</Button>
