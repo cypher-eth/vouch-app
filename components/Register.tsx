@@ -38,7 +38,7 @@ function Register() {
   if (billId !== "0" && billId !== "") {
     return (
       <section className="flex w-full flex-col gap-4">
-        <Vouch billCode={billId} />
+        <Vouch billCode={billId!} />
       </section>
     )
   }
