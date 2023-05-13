@@ -7,7 +7,6 @@ import { useConnectedAccount } from "@/lib/wagmi"
 import Button from "@/components/Button"
 import Input from "@/components/Input"
 import useWaitForTx from "@/lib/useWaitForTx"
-import Vouch from "@/components/Vouch"
 
 function Register() {
   const { waitForTx } = useWaitForTx({

@@ -31,7 +31,22 @@ export const useRegisterBill = ( id: string) => {
     functionName: "register",
   })
 }
-
+export const useUnregisterBill = ( id: string) => {
+  return useWriteTransaction({
+    abi: ["function unregister (string) external"],
+    address: "0x4D13ba5c7894C8d6c7B8Df0253Ce84a56562D10E",
+    args: [id],
+    functionName: "unregister",
+  })
+}
+export const useProcessUnvouched = ( id: string) => {
+  return useWriteTransaction({
+    abi: ["function processUnvouched (string) external"],
+    address: "0x4D13ba5c7894C8d6c7B8Df0253Ce84a56562D10E",
+    args: [id],
+    functionName: "processUnvouched",
+  })
+}
 export const useVouchForAddy = ( barcode: string, message: string ) => {
   return useWriteTransaction({
     abi: ["function vouch(string, string) external returns (bool)"],

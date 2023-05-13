@@ -13,5 +13,6 @@ export default function Home() {
     <section className="flex w-full flex-col gap-4">
       <Vouch billCode={latestBillCode} />
     </section>
+
   )
 }

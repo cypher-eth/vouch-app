@@ -39,8 +39,8 @@ function Vouch({ billCode }: { billCode: string }) {
       <section className="flex flex-col gap-4">
         <div>
           <h1 className="mb-2">Vouch Note</h1>
-          <p className="text-center opacity-70">
-            {billCode === "0" ? "" : ` (Your note is #${billCode})`}
+          <p className="text-center opacity-50">
+            {billCode === "0" ? "" : ` Your note: ${billCode}`}
           </p>
         </div>
         <Input
@@ -51,6 +51,8 @@ function Vouch({ billCode }: { billCode: string }) {
         <ForceConnectButton>
           <Button disabled={isLoading} onClick={handleVouch}>VOUCH</Button>
         </ForceConnectButton>
+
+
       </section>
     )
   }
@@ -70,6 +72,8 @@ function Vouch({ billCode }: { billCode: string }) {
       </ForceConnectButton>
 
     </section>
+
+    
   )
 }
 

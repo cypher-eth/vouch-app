@@ -23,22 +23,25 @@ function MainLayout({ children }: PropsWithChildren) {
         </section>
         <div className="flex-grow" />
         <footer className="flex gap-8 mt-16 text-xl items-center justify-center max-w-screen-sm mx-auto">
-          <Link className="font-title hover:text-o3-pink" href="/">
-            153
+          <Link className="font-title hover:text-o3-pink" href="/edit">
+            Edit
+          </Link>
+          <Link className="font-title hover:text-o3-pink" href="/share">
+            Share
           </Link>
           <Link
             target="_blank"
             className="font-title hover:text-o3-pink"
             href="https://t.me/c/1871610495/714/737"
           >
-            telegram
+            Telegram
           </Link>
           <Link
             target="_blank"
             className="font-title hover:text-o3-pink"
             href="https://twitter.com/blockravers"
           >
-            twitter
+            Twitter
           </Link>
         </footer>
       </main>
