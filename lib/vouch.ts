@@ -23,10 +23,12 @@ export const ABI = [
   },
 ] as const
 
+export const CONTRACT_ADDRESS = "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61"
+
 export const useRegisterBill = (id: string) => {
   return useWriteTransaction({
     abi: ["function register (string) external"],
-    address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
+    address: CONTRACT_ADDRESS,
     args: [id],
     functionName: "register",
   })
@@ -34,7 +36,7 @@ export const useRegisterBill = (id: string) => {
 export const useUnregisterBill = (id: string) => {
   return useWriteTransaction({
     abi: ["function unregister (string) external"],
-    address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
+    address: CONTRACT_ADDRESS,
     args: [id],
     functionName: "unregister",
   })
@@ -42,7 +44,7 @@ export const useUnregisterBill = (id: string) => {
 export const useProcessUnvouched = (id: string) => {
   return useWriteTransaction({
     abi: ["function processUnvouched (string) external"],
-    address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
+    address: CONTRACT_ADDRESS,
     args: [id],
     functionName: "processUnvouched",
   })
@@ -50,7 +52,7 @@ export const useProcessUnvouched = (id: string) => {
 export const useVouchForAddy = (barcode: string, message: string) => {
   return useWriteTransaction({
     abi: ["function vouch(string, string) external returns (bool)"],
-    address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
+    address: CONTRACT_ADDRESS,
     args: [barcode, message],
     overrides: {
       gasLimit: 3e6 as any,
@@ -68,7 +70,7 @@ export const useAccountMetadata = (address: string) => {
 
   const contract = useContract({
     abi: ABI,
-    address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
+    address: CONTRACT_ADDRESS,
     signerOrProvider: signer?.provider,
   })
 
