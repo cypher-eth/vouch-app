@@ -35,13 +35,13 @@ function Register() {
 
   waitForTx(txReceipt)
 
-  if (billId !== "0" && billId !== "" && billId != undefined ) {
-    return (
-      <section className="flex w-full flex-col gap-4">
-        <Vouch billCode={billId!} />
-      </section>
-    )
-  }
+  // if (billId !== "0" && billId !== "" && billId != undefined ) {
+  //   return (
+  //     <section className="flex w-full flex-col gap-4">
+  //       <Vouch billCode={billId!} />
+  //     </section>
+  //   )
+  // }
 
   return (
     <section className="flex flex-col gap-4">

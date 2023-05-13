@@ -9,17 +9,17 @@ import asset_logo from "@/assets/logo.webp"
 function Navigation() {
   const { asPath } = useRouter()
 
-  const RENDERED_LINKS = LINKS.map(({ href, name }) => {
-    return (
-      <NavButton
-        href={href}
-        key={`link-item-${href}`}
-        isActive={asPath === href}
-      >
-        {name}
-      </NavButton>
-    )
-  })
+  // const RENDERED_LINKS = LINKS.map(({ href, name }) => {
+  //   return (
+  //     <NavButton
+  //       href={href}
+  //       key={`link-item-${href}`}
+  //       isActive={asPath === href}
+  //     >
+  //       {name}
+  //     </NavButton>
+  //   )
+  // })
 
   return (
     <Fragment>
@@ -31,9 +31,9 @@ function Navigation() {
             </figure>
           </Link>
         </div>
-        <div className="hidden md:flex rounded-full bg-white p-1">
+        {/* <div className="hidden md:flex rounded-full bg-white p-1">
           {RENDERED_LINKS}
-        </div>
+        </div> */}
         <div className="flex [&_button]:!rounded-full whitespace-nowrap w-full items-center justify-end">
           <ConnectButton
             accountStatus={{
@@ -48,26 +48,26 @@ function Navigation() {
   )
 }
 
-const NavButton = ({
-  children,
-  isActive,
-  href,
-}: PropsWithChildren<{ isActive: boolean; href: string }>) => {
-  return (
-    <Link
-      href={href}
-      className={`font-bold text-sm hover:text-opacity-80 rounded-full py-2 px-5 ${
-        isActive ? "bg-rk-blue text-white" : "text-rk-blue"
-      }`}
-    >
-      {children}
-    </Link>
-  )
-}
+// const NavButton = ({
+//   children,
+//   isActive,
+//   href,
+// }: PropsWithChildren<{ isActive: boolean; href: string }>) => {
+//   return (
+//     <Link
+//       href={href}
+//       className={`font-bold text-sm hover:text-opacity-80 rounded-full py-2 px-5 ${
+//         isActive ? "bg-rk-blue text-white" : "text-rk-blue"
+//       }`}
+//     >
+//       {children}
+//     </Link>
+//   )
+// }
 
-const LINKS = [
-  { name: "Register", href: "/" },
-  { name: "Vouch", href: "/vouch" },
-]
+// const LINKS = [
+//   { name: "Register", href: "/" },
+//   { name: "Vouch", href: "/vouch" },
+// ]
 
 export default Navigation
