@@ -9,14 +9,13 @@ import useWaitForTx from "@/lib/useWaitForTx"
 import { ForceConnectButton } from "./Register"
 
 function Vouch({ billCode }: { billCode: string }) {
-
   const { waitForTx } = useWaitForTx({
     successMessage: "Vouch sent!",
     errorMessage: "Oops, something went wrong.",
   })
 
   const [addy, setAddy] = useState<string>()
-  const { 
+  const {
     write: vouch,
     data: txReceipt,
     isLoading,
@@ -34,7 +33,7 @@ function Vouch({ billCode }: { billCode: string }) {
 
   waitForTx(txReceipt)
 
-  if (billCode ) {
+  if (billCode) {
     return (
       <section className="flex flex-col gap-4">
         <div>
@@ -49,10 +48,10 @@ function Vouch({ billCode }: { billCode: string }) {
           placeholder="The Note of someone you trust."
         />
         <ForceConnectButton>
-          <Button disabled={isLoading} onClick={handleVouch}>VOUCH</Button>
+          <Button disabled={isLoading} onClick={handleVouch}>
+            VOUCH
+          </Button>
         </ForceConnectButton>
-
-
       </section>
     )
   }
@@ -70,10 +69,7 @@ function Vouch({ billCode }: { billCode: string }) {
           REGISTER
         </Button>
       </ForceConnectButton>
-
     </section>
-
-    
   )
 }
 

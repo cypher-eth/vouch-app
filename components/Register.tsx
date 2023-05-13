@@ -8,13 +8,12 @@ import Button from "@/components/Button"
 import Input from "@/components/Input"
 import useWaitForTx from "@/lib/useWaitForTx"
 
-function Register() {
+function Register({ vouchId }: { vouchId?: string }) {
   const { waitForTx } = useWaitForTx({
     successMessage: "Bill Registered!",
     errorMessage: "Oops, something went wrong.",
   })
 
-  const { address } = useConnectedAccount()
   const [billId, setBillId] = useState<string>()
 
   const {
@@ -32,15 +31,11 @@ function Register() {
     if (isLoading) setBillId(undefined)
   }, [isLoading])
 
-  waitForTx(txReceipt)
+  useEffect(() => {
+    if (vouchId) setBillId(vouchId)
+  }, [vouchId])
 
-  // if (billId !== "0" && billId !== "" && billId != undefined ) {
-  //   return (
-  //     <section className="flex w-full flex-col gap-4">
-  //       <Vouch billCode={billId!} />
-  //     </section>
-  //   )
-  // }
+  waitForTx(txReceipt)
 
   return (
     <section className="flex flex-col gap-4">
