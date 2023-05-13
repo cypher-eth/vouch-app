@@ -41,8 +41,15 @@ export const useVouchNote = (billId: string, message: string) => {
 }
 
 export const useAccountMetadata = (address: string) => {
-  const { data: latestBillCode = "" } = useContractRead<any, any, string>({
+  const { data: latestBillCode = "", isFetched } = useContractRead<
+    any,
+    any,
+    string
+  >({
     cacheTime: 15_000,
+    scopeKey: `metdata.for.${address}`,
+    watch: true,
+    enabled: Boolean(address),
     abi: ["function userBarcode(address) external view returns (string)"],
     address: CONTRACT_ADDRESS,
     functionName: "userBarcode",
@@ -51,5 +58,6 @@ export const useAccountMetadata = (address: string) => {
 
   return {
     latestBillCode,
+    isFetched,
   }
 }

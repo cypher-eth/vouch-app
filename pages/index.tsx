@@ -8,9 +8,9 @@ import Vouch from "@/components/Vouch"
 export default function Home() {
   const { vouch } = useRouter().query as { vouch: string }
   const { address: connectedAddy } = useConnectedAccount()
-  const { latestBillCode } = useAccountMetadata(connectedAddy)
+  const { latestBillCode, isFetched } = useAccountMetadata(connectedAddy)
 
-  if (latestBillCode === "") {
+  if (latestBillCode === "" && isFetched) {
     // No-Vouch or Empty
     return <Register />
   }
