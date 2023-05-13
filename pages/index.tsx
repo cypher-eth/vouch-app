@@ -10,18 +10,18 @@ export default function Home() {
   const { address: connectedAddy } = useConnectedAccount()
   const { latestBillCode } = useAccountMetadata(connectedAddy)
 
-  if (["0", ""].includes(latestBillCode) || vouch) {
+  if (["0", ""].includes(latestBillCode)) {
     // No-Vouch or Empty
     return (
       <section className="flex w-full flex-col gap-4">
-        <Register vouchId={vouch} />
+        <Register />
       </section>
     )
   }
 
   return (
     <section className="flex w-full flex-col gap-4">
-      <Vouch billCode={latestBillCode} />
+      <Vouch palNote={vouch} billCode={latestBillCode} />
     </section>
   )
 }
