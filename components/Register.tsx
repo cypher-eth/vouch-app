@@ -42,7 +42,7 @@ function Register() {
       <h1>Register Bill</h1>
       <Input
         value={billId}
-        onChange={(e) => setBillId(e.target.value?.toUpperCase())}
+        onChange={(e) => setBillId(e.target.value.toUpperCase())}
         placeholder="Bill Serial #"
       />
       <ForceConnectButton>

@@ -14,7 +14,7 @@ function Vouch({ billCode, palNote }: { billCode: string; palNote: string }) {
     errorMessage: "Oops, something went wrong.",
   })
 
-  const [note, setNote] = useState<string | undefined>(palNote)
+  const [note, setNote] = useState("")
 
   const {
     write: vouch,
@@ -29,11 +29,11 @@ function Vouch({ billCode, palNote }: { billCode: string; palNote: string }) {
   }
 
   useEffect(() => {
-    if (isLoading) setNote(undefined)
+    if (isLoading) setNote("")
   }, [isLoading])
 
   useEffect(() => {
-    if (palNote) setNote(palNote)
+    if (palNote) setNote(palNote.toUpperCase())
   }, [palNote])
 
   waitForTx(txReceipt)
@@ -48,7 +48,7 @@ function Vouch({ billCode, palNote }: { billCode: string; palNote: string }) {
       </div>
       <Input
         value={note}
-        onChange={(e) => setNote(e.target.value)}
+        onChange={(e) => setNote(e.target.value.toUpperCase())}
         placeholder="The Note of someone you trust"
       />
       <ForceConnectButton>
