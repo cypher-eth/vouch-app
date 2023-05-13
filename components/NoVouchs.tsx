@@ -1,4 +1,3 @@
-import { ForceConnectButton } from "./Register"
 import Button from "./Button"
 
 function NoVouchs() {
@@ -10,11 +9,9 @@ function NoVouchs() {
           You must register a Bill to continue.
         </p>
       </div>
-      <ForceConnectButton>
-        <Button asLink href="/">
-          REGISTER
-        </Button>
-      </ForceConnectButton>
+      <Button asLink href="/">
+        REGISTER
+      </Button>
     </section>
   )
 }
