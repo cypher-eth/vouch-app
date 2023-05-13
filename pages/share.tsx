@@ -9,11 +9,7 @@ export default function Home() {
   const { latestBillCode } = useAccountMetadata(connectedAddy)
 
   if (latestBillCode) {
-    return (
-      <section className="flex w-full flex-col gap-4">
-        <QrCode billCode={latestBillCode} />
-      </section>
-    )
+    return <QrCode billCode={latestBillCode} />
   }
 
   return <NoVouchs />
