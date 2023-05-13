@@ -11,7 +11,7 @@ function Input(props: InputProps) {
     <input
       {...props}
       className={classnames(
-        "border-b-[1.5px] placeholder:text-white/60 text-white bg-transparent border-white py-3 px-4 focus:outline-none w-full",
+        "border-b-[1.5px] mx-auto lg:max-w-sm text-center placeholder:text-white/60 text-white bg-transparent border-white py-3 px-4 focus:outline-none w-full",
         props.className
       )}
     />

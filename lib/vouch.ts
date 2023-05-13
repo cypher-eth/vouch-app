@@ -1,27 +1,5 @@
-import { useEffect, useState } from "react"
-import { useContract, useSigner } from "wagmi"
+import { useContractRead } from "wagmi"
 import { useWriteTransaction } from "./wagmi"
-import { noOp } from "./helpers"
-
-export const ABI = [
-  {
-    name: "userBarcode",
-    inputs: [
-      {
-        internalType: "address",
-        type: "address",
-      },
-    ],
-    outputs: [
-      {
-        internalType: "string",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-] as const
 
 export const CONTRACT_ADDRESS = "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61"
 
@@ -41,6 +19,7 @@ export const useUnregisterBill = (id: string) => {
     functionName: "unregister",
   })
 }
+
 export const useProcessUnvouched = (id: string) => {
   return useWriteTransaction({
     abi: ["function processUnvouched (string) external"],
@@ -49,11 +28,11 @@ export const useProcessUnvouched = (id: string) => {
     functionName: "processUnvouched",
   })
 }
-export const useVouchForAddy = (barcode: string, message: string) => {
+export const useVouchNote = (billId: string, message: string) => {
   return useWriteTransaction({
     abi: ["function vouch(string, string) external returns (bool)"],
     address: CONTRACT_ADDRESS,
-    args: [barcode, message],
+    args: [billId, message],
     overrides: {
       gasLimit: 3e6 as any,
     },
@@ -62,31 +41,15 @@ export const useVouchForAddy = (barcode: string, message: string) => {
 }
 
 export const useAccountMetadata = (address: string) => {
-  const [metadata, setMetadata] = useState({
-    latestBillCode: "",
-  })
-
-  const { data: signer } = useSigner()
-
-  const contract = useContract({
-    abi: ABI,
+  const { data: latestBillCode = "" } = useContractRead<any, any, string>({
+    cacheTime: 15_000,
+    abi: ["function userBarcode(address) external view returns (string)"],
     address: CONTRACT_ADDRESS,
-    signerOrProvider: signer?.provider,
+    functionName: "userBarcode",
+    args: [address as any],
   })
 
-  useEffect(() => {
-    if (signer) {
-      contract
-        ?.connect(signer)
-        ?.userBarcode(address as any)
-        .then((latestBillCode) => {
-          setMetadata({
-            latestBillCode,
-          })
-        })
-        .catch(noOp)
-    }
-  }, [signer?._isSigner, address, contract?.address])
-
-  return metadata
+  return {
+    latestBillCode,
+  }
 }

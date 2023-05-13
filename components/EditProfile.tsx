@@ -29,11 +29,9 @@ function EditProfile({ billCode }: { billCode: string }) {
     return (
       <section className="flex flex-col gap-4">
         <div>
-          <h1 className="mb-2">Edit Profile</h1>
-        </div>
-        <div>
-          <p className="text-center">
-            Unregister your note {billCode === "0" ? "" : ` ${billCode}`}
+          <h1 className="mb-2">Your Profile</h1>
+          <p className="text-center opacity-60 text-lg">
+            Your note: <strong className="font-semibold">{billCode}</strong>
           </p>
         </div>
         <ForceConnectButton>

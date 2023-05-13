@@ -11,7 +11,7 @@ function NoVouchs() {
         </p>
       </div>
       <ForceConnectButton>
-        <Button asLink href="/register">
+        <Button asLink href="/">
           REGISTER
         </Button>
       </ForceConnectButton>
