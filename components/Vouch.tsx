@@ -7,29 +7,35 @@ import Input from "@/components/Input"
 import useWaitForTx from "@/lib/useWaitForTx"
 
 import { ForceConnectButton } from "./Register"
+import NoVouchs from "./NoVouchs"
 
-function Vouch({ billCode }: { billCode: string }) {
+function Vouch({ billCode, palNote }: { billCode: string; palNote: string }) {
   const { waitForTx } = useWaitForTx({
     successMessage: "Vouch sent!",
     errorMessage: "Oops, something went wrong.",
   })
 
-  const [addy, setAddy] = useState<string>()
+  const [note, setNote] = useState<string>()
+
   const {
     write: vouch,
     data: txReceipt,
     isLoading,
-  } = useVouchForAddy(addy!, "Good vibes at Zuzalu")
+  } = useVouchForAddy(note!, "Good vibes at Zuzalu")
 
   function handleVouch() {
-    if (!addy?.length) return toastError("Address cannot be empty")
+    if (!note?.length) return toastError("Address cannot be empty")
     if (!vouch) return toastError("Input not valid")
     vouch()
   }
 
   useEffect(() => {
-    if (isLoading) setAddy(undefined)
+    if (isLoading) setNote(undefined)
   }, [isLoading])
+
+  useEffect(() => {
+    if (palNote) setNote(palNote)
+  }, [palNote])
 
   waitForTx(txReceipt)
 
@@ -39,12 +45,12 @@ function Vouch({ billCode }: { billCode: string }) {
         <div>
           <h1 className="mb-2">Vouch Note</h1>
           <p className="text-center opacity-50">
-            {billCode === "0" ? "" : ` Your note: ${billCode}`}
+            {billCode === "0" ? "" : `Your note: ${billCode}`}
           </p>
         </div>
         <Input
-          value={addy}
-          onChange={(e) => setAddy(e.target.value)}
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
           placeholder="The Note of someone you trust."
         />
         <ForceConnectButton>
@@ -56,21 +62,7 @@ function Vouch({ billCode }: { billCode: string }) {
     )
   }
 
-  return (
-    <section className="flex flex-col gap-8">
-      <div>
-        <h1 className="mb-2">No Bills Found</h1>
-        <p className="text-center opacity-70">
-          You must register a Bill to continue.
-        </p>
-      </div>
-      <ForceConnectButton>
-        <Button asLink href="/register">
-          REGISTER
-        </Button>
-      </ForceConnectButton>
-    </section>
-  )
+  return <NoVouchs />
 }
 
 export default Vouch

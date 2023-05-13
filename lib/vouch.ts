@@ -23,7 +23,7 @@ export const ABI = [
   },
 ] as const
 
-export const useRegisterBill = ( id: string) => {
+export const useRegisterBill = (id: string) => {
   return useWriteTransaction({
     abi: ["function register (string) external"],
     address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
@@ -31,7 +31,7 @@ export const useRegisterBill = ( id: string) => {
     functionName: "register",
   })
 }
-export const useUnregisterBill = ( id: string) => {
+export const useUnregisterBill = (id: string) => {
   return useWriteTransaction({
     abi: ["function unregister (string) external"],
     address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
@@ -39,7 +39,7 @@ export const useUnregisterBill = ( id: string) => {
     functionName: "unregister",
   })
 }
-export const useProcessUnvouched = ( id: string) => {
+export const useProcessUnvouched = (id: string) => {
   return useWriteTransaction({
     abi: ["function processUnvouched (string) external"],
     address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
@@ -47,7 +47,7 @@ export const useProcessUnvouched = ( id: string) => {
     functionName: "processUnvouched",
   })
 }
-export const useVouchForAddy = ( barcode: string, message: string ) => {
+export const useVouchForAddy = (barcode: string, message: string) => {
   return useWriteTransaction({
     abi: ["function vouch(string, string) external returns (bool)"],
     address: "0x5cbe254Bf5bF98e96F1972d70A3F5abD54efbA61",
@@ -61,7 +61,7 @@ export const useVouchForAddy = ( barcode: string, message: string ) => {
 
 export const useAccountMetadata = (address: string) => {
   const [metadata, setMetadata] = useState({
-    latestBillCode: "0",
+    latestBillCode: "",
   })
 
   const { data: signer } = useSigner()

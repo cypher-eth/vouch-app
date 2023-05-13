@@ -24,7 +24,7 @@ function MainLayout({ children }: PropsWithChildren) {
         <div className="flex-grow" />
         <footer className="flex gap-8 mt-16 text-xl items-center justify-center max-w-screen-sm mx-auto">
           <Link className="font-title hover:text-o3-pink" href="/edit">
-            Edit
+            Profile
           </Link>
           <Link className="font-title hover:text-o3-pink" href="/share">
             Share
