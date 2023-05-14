@@ -1,12 +1,21 @@
-# Typescript/NextJs 13 - Web3 template
+# Vouch App
 
-A template repo that hosts my day-to-day used tech stack.
+An app for vouching people you trust
 
-## Start
+## Features
 
-```
-npm install && npm run dev
-```
+- Register your bank note
+- Share note via QR code
+- VOuch for friends
+- List your vouch count
+- Unregister note
+
+## Smart Contracts
+
+Can be found in the following repo
+
+[Vouch Contracts](https://github.com/cypher-eth/vouch)
+
 
 ## The Stack
 
@@ -15,4 +24,3 @@ npm install && npm run dev
 - Wagmi, Ethers, RainbowKit
 - NextJs goodies: (next-seo, next/font)
 
-> Te amo Guillermo Rauch 🥰
