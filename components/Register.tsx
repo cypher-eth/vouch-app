@@ -12,33 +12,37 @@ function Register() {
   const { waitForTx } = useWaitForTx({
     successMessage: "Bill Registered!",
     errorMessage: "Oops, something went wrong.",
+    onSuccess() {
+      setTimeout(() => window.location.reload(), 300)
+    },
   })
 
-  const [billId, setBillId] = useState<string>()
+  const [billId, setBillId] = useState("")
 
   const {
     write: register,
     data: txReceipt,
+    isSuccess,
     isLoading,
-  } = useRegisterBill(billId!)
+  } = useRegisterBill(billId)
 
   function handleRegister() {
-    if (!billId?.length) return toastError("Bill cannot be empty")
+    if (!billId.length) return toastError("Bill cannot be empty")
     register?.()
   }
 
   useEffect(() => {
-    if (isLoading) setBillId(undefined)
-  }, [isLoading])
+    if (isSuccess) setBillId("")
+  }, [isSuccess])
 
   waitForTx(txReceipt)
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="w-full flex flex-col gap-4">
       <h1>Register Bill</h1>
       <Input
         value={billId}
-        onChange={(e) => setBillId(e.target.value?.toUpperCase())}
+        onChange={(e) => setBillId(e.target.value.toUpperCase())}
         placeholder="Bill Serial #"
       />
       <ForceConnectButton>

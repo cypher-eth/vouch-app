@@ -8,20 +8,12 @@ import Vouch from "@/components/Vouch"
 export default function Home() {
   const { vouch } = useRouter().query as { vouch: string }
   const { address: connectedAddy } = useConnectedAccount()
-  const { latestBillCode } = useAccountMetadata(connectedAddy)
+  const { latestBillCode, isFetched } = useAccountMetadata(connectedAddy)
 
-  if (["0", ""].includes(latestBillCode)) {
+  if (latestBillCode === "" && isFetched) {
     // No-Vouch or Empty
-    return (
-      <section className="flex w-full flex-col gap-4">
-        <Register />
-      </section>
-    )
+    return <Register />
   }
 
-  return (
-    <section className="flex w-full flex-col gap-4">
-      <Vouch palNote={vouch} billCode={latestBillCode} />
-    </section>
-  )
+  return <Vouch palNote={vouch} billCode={latestBillCode} />
 }

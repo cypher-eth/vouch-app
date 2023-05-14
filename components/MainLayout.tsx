@@ -26,9 +26,6 @@ function MainLayout({ children }: PropsWithChildren) {
           <Link className="font-title hover:text-o3-pink" href="/edit">
             Profile
           </Link>
-          <Link className="font-title hover:text-o3-pink" href="/share">
-            Share
-          </Link>
           <Link
             target="_blank"
             className="font-title hover:text-o3-pink"

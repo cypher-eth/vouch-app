@@ -1,12 +1,20 @@
 import { toastError } from "@/lib/toaster"
-import { useUnregisterBill } from "@/lib/vouch"
+import { useAccountMetadata, useUnregisterBill } from "@/lib/vouch"
 import Button from "@/components/Button"
 import useWaitForTx from "@/lib/useWaitForTx"
 
 import { ForceConnectButton } from "./Register"
 import NoVouchs from "./NoVouchs"
 
-function EditProfile({ billCode }: { billCode: string }) {
+function EditProfile({
+  billCode,
+  account,
+}: {
+  billCode: string
+  account: string
+}) {
+  const { vouchCount } = useAccountMetadata(account)
+
   const { waitForTx } = useWaitForTx({
     successMessage: "Bill Unregistered!",
     errorMessage: "Oops, something went wrong.",
@@ -27,18 +35,28 @@ function EditProfile({ billCode }: { billCode: string }) {
 
   if (billCode) {
     return (
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 mb-4">
         <div>
-          <h1 className="mb-2">Edit Profile</h1>
-        </div>
-        <div>
-          <p className="text-center">
-            Unregister your note {billCode === "0" ? "" : ` ${billCode}`}
+          <h1 className="mb-2">Your Profile</h1>
+          <p className="text-center opacity-60 text-lg">
+            Your note: <strong className="font-semibold">{billCode}</strong>
           </p>
+
+          <div className="flex mt-20 flex-col items-center justify-center gap-2">
+            <div className="bg-black/10 text-xl font-semibold backdrop-blur w-12 h-12 rounded-full flex items-center justify-center">
+              {vouchCount}
+            </div>
+            <p className="text-center opacity-60 text-lg">Times Vouched</p>
+          </div>
         </div>
         <ForceConnectButton>
           <Button disabled={isLoading} onClick={handleUnregister}>
-            Unregister
+            Remove
+          </Button>
+        </ForceConnectButton>
+        <ForceConnectButton>
+          <Button asLink href="/share" type="outlined">
+            Share
           </Button>
         </ForceConnectButton>
       </section>
