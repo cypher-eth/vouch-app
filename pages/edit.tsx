@@ -7,5 +7,5 @@ export default function Home() {
   const { address: connectedAddy } = useConnectedAccount()
   const { latestBillCode } = useAccountMetadata(connectedAddy)
 
-  return <EditProfile billCode={latestBillCode} />
+  return <EditProfile account={connectedAddy} billCode={latestBillCode} />
 }
