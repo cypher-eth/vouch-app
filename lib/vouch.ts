@@ -47,7 +47,7 @@ export const useAccountMetadata = (address: string) => {
     string
   >({
     cacheTime: 15_000,
-    scopeKey: `metdata.for.${address}`,
+    scopeKey: `userBarcode.${address}`,
     watch: true,
     enabled: Boolean(address),
     abi: ["function userBarcode(address) external view returns (string)"],
@@ -56,8 +56,20 @@ export const useAccountMetadata = (address: string) => {
     args: [address as any],
   })
 
+  const { data: vouchCount } = useContractRead<any, any, any>({
+    cacheTime: 15_000,
+    scopeKey: `vouchCount.${address}`,
+    watch: true,
+    enabled: Boolean(address),
+    abi: ["function vouchCount(address) external view returns (uint256)"],
+    address: CONTRACT_ADDRESS,
+    functionName: "vouchCount",
+    args: [address as any],
+  })
+
   return {
     latestBillCode,
     isFetched,
+    vouchCount: Number(vouchCount || 0),
   }
 }
