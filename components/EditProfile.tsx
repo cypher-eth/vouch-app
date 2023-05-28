@@ -5,6 +5,7 @@ import useWaitForTx from "@/lib/useWaitForTx"
 
 import { ForceConnectButton } from "./Register"
 import NoVouchs from "./NoVouchs"
+import NavTitle from "./NavTitle"
 
 function EditProfile({
   billCode,
@@ -37,7 +38,7 @@ function EditProfile({
     return (
       <section className="flex flex-col gap-4 mb-4">
         <div>
-          <h1 className="mb-2">Your Profile</h1>
+          <NavTitle href="/">Your Profile</NavTitle>
           <p className="text-center opacity-60 text-lg">
             Your note: <strong className="font-semibold">{billCode}</strong>
           </p>

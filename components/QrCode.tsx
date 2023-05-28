@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 
 import { toastSuccess } from "@/lib/toaster"
 import { MdOutlineContentCopy } from "react-icons/md"
+import NavTitle from "./NavTitle"
 
 function QrCode({ billCode }: { billCode: string }) {
   const [qr, setQr] = useState({
@@ -40,8 +41,7 @@ function QrCode({ billCode }: { billCode: string }) {
 
   return (
     <section>
-      <h1 className="mb-2">Share Note</h1>
-
+      <NavTitle href="/edit">Share Note</NavTitle>
       {qr.imageURL && (
         <div className="max-w-[90vw] mx-auto mt-6">
           <figure className="overflow-hidden rounded-xl">
